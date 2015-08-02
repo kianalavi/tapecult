@@ -1,0 +1,323 @@
+/*Import Oswald font from google*/
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
+
+/*COLORS*/
+/* color: #d73737 red */
+/* color: #f6f6c4; yellow */
+/* color: #32302e; dark grey */
+
+/*Music player images*/
+.spinner-wrap {
+    display: block;
+    width: 327px;
+    height: 327px;
+    position: relative;
+    left: 50%;
+    margin-left: -163px;
+    top: 0;
+    top: 19px;
+}
+
+.spinner-wrap * {
+    cursor: pointer;
+}
+
+.spinner-outer {
+    display: block;
+    width: 327px;
+    height: 327px;
+    position: absolute;
+    left: 41%;
+    margin-left: -163px;
+    border-radius: 50%;
+    background: url(spinner-outer.png) center center no-repeat #32302e;
+}
+
+.playing .spinner-outer {
+    -webkit-animation: spin-cw 5s linear infinite;
+    -moz-animation: spin-cw 5s linear infinite;
+    animation: spin-cw 5s linear infinite;
+}
+
+.spinner-center {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    background: url(spinner-center.png) center center no-repeat;
+    border-radius: 50%;
+    left: 41%;
+    top: 50%;
+    margin: -99px;
+    pointer-events: none;
+}
+
+.playing .spinner-center {
+    -webkit-animation: spin-ccw 5s linear infinite;
+    -moz-animation: spin-ccw 5s linear infinite;
+    animation: spin-ccw 5s linear infinite;
+}
+
+.play-sprite {
+    position: absolute;
+    top: 50%;
+    left: 41%;
+    margin: -35px 0 0 -35px;
+    background: url(play-sprite.png) 0px 0px no-repeat;
+    height: 70px;
+    width: 70px;
+}
+
+.playing .play-sprite {
+    background-position: 0px -70px;
+}
+
+/*Music player images resize*/
+/*@media (max-width:600px) {
+    .spinner-wrap {
+        background: none!important;
+        width: auto!important;
+        height: auto!important;
+        margin: 0;
+    }
+
+    .spinner-outer, .spinner-center, .play-sprite,
+    .playing .spinner-outer, .playing .spinner-center,
+    .playing .play-sprite {
+        max-width: 25%;
+        max-height: 25%;
+    }
+}*/
+
+
+/*Music player animation*/
+@-webkit-keyframes spin-cw {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spin-cw {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-cw {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin-ccw {
+    from {
+        -webkit-transform: rotate(360deg);
+    }
+
+    to {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-moz-keyframes spin-ccw {
+    from {
+        -moz-transform: rotate(360deg);
+    }
+
+    to {
+        -moz-transform: rotate(0deg);
+    }
+}
+
+@keyframes spin-ccw {
+    from {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
+    to {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+/*Pure style overrides*/
+body {
+  background-color: #f6f6c4;
+}
+
+div #main {
+  background-color: #d73737;
+}
+
+div .header {
+  border: none;
+}
+
+div .content {
+    width: 100%;
+    height: 182px;
+}
+
+.menu-link {
+  top: 20px;
+  background: #32302e;
+  background: rgba(50, 48, 46, 1);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  background: #32302e;
+}
+
+.menu-link span,
+.menu-link span:before,
+.menu-link span:after {
+  background-color: #f6f6c4;
+}
+
+#menu {
+  background-color: #32302e;
+
+}
+ #menu .pure-menu-heading {
+  background-color: #32302e;
+  color: #bd5248;
+  font-size: 100%;
+  text-transform: none;
+  -webkit-margin-before: 0.57em;
+  -webkit-margin-after: 0.27em;
+}
+
+#menu a {
+  color: #d73737;
+  display: block;
+  padding: 0.6em 0 0.6em 1.6em;
+  white-space: nowrap;
+  background-color: transparent;
+  cursor: auto;
+  text-decoration: none;
+  text-align: -webkit-match-parent;
+  list-style: none;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  font-family: "Oswald" sans-serif;
+}
+
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.0s ease-in;
+    -moz-transition: all 0.0s ease-in;
+    -ms-transition: all 0.0s ease-in;
+    -o-transition: all 0.0s ease-in;
+    transition: all 0.0s ease-in;
+}
+
+
+.header h1 {
+  color: #f6f6c4;
+  font-family: "Oswald" sans-serif;
+  font-size: 8.8vw;
+  font-weight: bold;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  display: block;
+  margin: 0;
+  -webkit-margin-before: 0.37em;
+  -webkit-margin-after: 0.27em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header div h2 a {
+  color: #32302e;
+  font-family: "Oswald" sans-serif;
+  font-weight: 300;
+  font-size: 4.8vw;
+  text-decoration: none;
+  cursor: auto;
+  line-height: 1.14;
+  /*letter-spacing: -1px;*/
+  -webkit-font-smoothing: antialiased;
+  -webkit-margin-after: 0em;
+
+}
+.header div h2 a:hover {
+  color: #f6f6c4;
+}
+
+hr {
+  border-style: dashed;
+  border-width: 1px;
+  border-color: #150505;
+  opacity: .05;
+}
+
+.pure-menu-list #twitter {
+  color: #f6f6c4;
+}
+
+@media (max-width: 768px) {
+    .spinner-outer {
+      width: 200px;
+      height: 200px;
+      margin-left: -137px;
+      left: 60%;
+    }
+    .spinner-center {
+      width: 122px;
+      height: 122px;
+      left: 53%;
+      top: 35%;
+      margin: -75px;
+    }
+    .play-sprite {
+      width: 30px;
+      height: 30px;
+      top: 36%;
+      left: 55%;
+    }
+    .playing .play-sprite {
+      background-position: 0px -29px;
+    }
+    div .content {
+      height: 119px;
+      width: inherit;
+    }
+
+}
+.spinner-outer, .spinner-center, .play-sprite {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

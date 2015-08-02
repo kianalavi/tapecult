@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A fine selection of long-form house music sets.">
+  <title>tapecult</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="css/layouts/side-menu.css">
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="css/layouts/master.css">
+</head>
+
+<body>
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#"></a>
+            <ul class="pure-menu-list"></ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>tapecult/</h1>
+            <h2>[...]</h2>
+        </div>
+
+        <div class="content">
+          <!-- HTML5 Audio Player -->
+          <audio id="track_url"></audio>
+
+          <!-- Main content and center spinner -->
+            <div class="spinner-wrap">
+              <div class="spinner-outer"></div>
+              <div class="spinner-center"></div>
+              <div class="play-sprite"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- id="pure-img-responsive" -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- UI js -->
+<script src="js/ui.js"></script>
+<!-- Music data stored in music.js -->
+<script src="js/music.js" type="text/javascript"></script>
+<!-- Play / stop spinner in center -->
+<script src="js/spinner.js" type="text/javascript"></script>
+<script>
+
+// Audio loader, and information setter
+var select_track = function(i){
+  // Grabbing info from the music.js array and pushing to page
+  $('.header').html(
+    '<div><h1>tapecult/' + music[i].tape + '</h1></div>' +
+    '<div><h2>' + music[i].artistlink + ' : ' + music[i].track_title + ' <img src="css/layouts/sclogo.png">' + '</h2></div>')
+  // Setting the track url in the HTML Audio tag with jQuery
+  $('#track_url').html('<source src="' + music[i].track_url + '" type="audio/mp3" />')
+}
+select_track(0)
+
+
+// On page load populate the slide left menu
+var populate_menu = function(arr) {
+  var i = 0;
+  // On page load load in the first song to first_track
+  // select_track(i);
+  // Iterate over the array of music and set-up the menu links and ids
+  while (i < arr.length){
+    $('.pure-menu-list').append('<li class="pure-menu-item"><a href="#" class="pure-menu-link"' + 'id="' + i + '">' + arr[i].artist + '</a></li>');
+    i++;
+  }
+  $('.pure-menu-list').append('<hr><li class="pure-menu-item"><a href="http://www.twitter.com/tapecult" id="twitter" class="pure-menu-link">@tapecult</a>');
+
+}
+// Call the populate_menu function and pass it the music array
+populate_menu(music);
+
+// Change song from Menu
+
+$('.pure-menu-link').on('click', function () {
+  // Get the id from the track clicked on
+  var i = this.id;
+  // Get the track_url and set it to var audio
+  var audio = music[i].track_url;
+  // // Run first_track loading function
+  select_track(i);
+  // Tell the CSS webkit animation to stop by removing the playing //class
+  document.getElementById('track_url').pause();
+  $('.spinner-wrap').removeClass('playing');
+  })
+
+</script>
+
+</body>
+</html>
