@@ -1,6 +1,6 @@
 {
-  "name": "puretapecult",
+  "name": "tapecult",
   "root": "./",
   "clean_urls": false,
-  "error_page": "n"
+  "error_page": "error.html"
 }

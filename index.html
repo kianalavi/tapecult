@@ -4,23 +4,21 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="favicons/manifest.json">
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A fine selection of long-form house music sets.">
@@ -75,7 +73,6 @@
 </div>
 
 
-<!-- id="pure-img-responsive" -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- UI js -->
@@ -95,27 +92,24 @@ var select_track = function(i){
   // Setting the track url in the HTML Audio tag with jQuery
   $('#track_url').html('<source src="' + music[i].track_url + '" type="audio/mp3" />')
 }
-select_track(0)
 
 
 // On page load populate the slide left menu
 var populate_menu = function(arr) {
   var i = 0;
   // On page load load in the first song to first_track
-  // select_track(i);
+  select_track(i);
   // Iterate over the array of music and set-up the menu links and ids
   while (i < arr.length){
     $('.pure-menu-list').append('<li class="pure-menu-item"><a href="#" class="pure-menu-link"' + 'id="' + i + '">' + arr[i].artist + '</a></li>');
     i++;
   }
   $('.pure-menu-list').append('<hr><li class="pure-menu-item"><a href="http://www.twitter.com/tapecult" id="twitter" class="pure-menu-link">@tapecult</a>');
-
 }
 // Call the populate_menu function and pass it the music array
 populate_menu(music);
 
 // Change song from Menu
-
 $('.pure-menu-link').on('click', function () {
   // Get the id from the track clicked on
   var i = this.id;
@@ -126,6 +120,11 @@ $('.pure-menu-link').on('click', function () {
   // Tell the CSS webkit animation to stop by removing the playing //class
   document.getElementById('track_url').pause();
   $('.spinner-wrap').removeClass('playing');
+  // To collapse the side menu on selection
+  $('div#layout').removeClass('active');
+  document.getElementById('track_url').load();
+  document.getElementById('track_url').play();
+  $('.spinner-wrap').addClass('playing');
   })
 
 </script>
