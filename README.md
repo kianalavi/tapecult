@@ -13,3 +13,10 @@ of Soundcoud.
 + jQuery javascript library is used 
 
 This is my first web app, and I refactored this project many times. Any suggestions on how to improve the code is appreciated. 
+
+To dos:
++ Auto load next track
++ Spinner stops moving when track ends
++ Deliver track info via JSON
++ Look into scroll movement (related to spinner?)
++ In large window view, decrease header height, bringing spinner up in window
